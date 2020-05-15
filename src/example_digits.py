@@ -1,11 +1,12 @@
 from neuron_net_2 import ElementaryNeuronNet2
 import numpy as np
 from helper.mnist import mnist_helper, mnist_reader
+from helper.nn_persist import write_as_json_to_file, load_from_file
 import matplotlib.pyplot as plt
 
 X_train, y_train = mnist_reader.load_mnist('../data/digits', kind='train')
 X_test, y_test = mnist_reader.load_mnist('../data/digits', kind='t10k')
-labels = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'nine']
+labels = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
 
 
 # input=500 1hl=40 2hl=4 lr=0.00005        epoch: 10200 from 100000  Error: 0.07709423218073314
@@ -24,16 +25,21 @@ nn2 = ElementaryNeuronNet2(first_hidden_layer_neuron_count=20,
                            input_data_shape=28 * 28,
                            min_step=0.0001
                            )
+file_name = 'nn_weights.json'
+print('Do we want to train out nn or just load the weights?')
+ans = input('(T (train)/ L (load)) << ').lower()
+X_train_nn_input = np.split(X_train, [offset, offset + input_data_size, ])[1] / 255
+y_train_nn_input = np.split(y_train, [offset, offset + input_data_size, ])[1] / 10
+if ans in ['train', 't']:
 
-X_train_nn_input = np.split(X_train, [offset, offset+ input_data_size, ])[1] / 255
-y_train_nn_input = np.split(y_train, [offset, offset+input_data_size, ])[1] / 10
+    nn = nn2
+    nn.train(X_train_nn_input, y_train_nn_input, epochs=epochs)
+    write_as_json_to_file(nn, file_name)
+else:
+    nn = load_from_file(file_name)
 
-nn = nn2
-nn.train(X_train_nn_input, y_train_nn_input, epochs=epochs)
-nn.to_json()
 
-
-def interpret_nn_out_as_word(net_output):
+def convert_nn_out_to_human_readable_text(net_output):
     raw_net_output = net_output[0]
     print(f"raw_net_output {raw_net_output}")
     index = int(round(raw_net_output, 1) * 10)
@@ -43,7 +49,7 @@ def interpret_nn_out_as_word(net_output):
 def show_pictures_with_titles(pictures, labels=None):
     for i in range(len(pictures)):
         data = pictures[i]
-        answer = interpret_nn_out_as_word(nn.think(data))
+        answer = convert_nn_out_to_human_readable_text(nn.think(data))
         if labels is not None and labels.any():
             print(f"actual data is {labels[i]}")
         plt.gcf().canvas.set_window_title(f"neuron net says that is {answer} ")
