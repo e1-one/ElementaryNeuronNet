@@ -5,7 +5,7 @@ import numpy as np
 from neuron_net_2 import ElementaryNeuronNet2
 
 
-def write_as_json_to_file(nn, file_name):
+def write_weights_as_json_to_file(nn, file_name):
     obj = {
         'class_version': nn.class_version,
         'weights_on_hidden.shape': nn.weights_on_hidden.shape,
@@ -19,13 +19,13 @@ def write_as_json_to_file(nn, file_name):
         json.dump(obj, outfile)
 
 
-def load_from_file(file_name):
+def init_nn_with_weights_from_file(file_name):
     with open(file_name, 'r') as f:
         import json
         obj = json.load(f)
     print(f"loaded {obj}")
-    assert obj[
-               'class_version'] == ElementaryNeuronNet2.class_version, "version of the loaded object differs from the existing one "
+    assert obj['class_version'] == ElementaryNeuronNet2.class_version,\
+        "version of the loaded object differs from the existing one "
 
     nn = ElementaryNeuronNet2(
         input_data_shape=obj['weights_on_hidden.shape'][0],
