@@ -1,5 +1,5 @@
 # Elementary Neuron Net
-> 👶 It is child's play with a self-written neural net 
+> 👶 It is child's play with a self-written easy neural net 
 >
 This neural network has the next features:
  - Feed-Forward Neural Network or Artificial Neural Network (ANN) 
@@ -8,6 +8,6 @@ This neural network has the next features:
  - is fed with "full batch" (during one epoch weights adjustment is based on all training examples)
  - weights could be written/loaded to the file
 
-*./example_digits.py*  - demo of how this NN recognizes hand written digits
+*./example_digits.py*  - demo of how this NN recognizes handwritten digits
 
-MNIST database has been used for training http://yann.lecun.com/exdb/mnist/
+package helper.mnist contains functions for operating with [MNIST](http://yann.lecun.com/exdb/mnist/) database

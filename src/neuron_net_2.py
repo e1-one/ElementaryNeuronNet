@@ -81,7 +81,7 @@ class ElementaryNeuronNet2:
                     break
                     pass
                 error_prev = error
-        print("training finished")
+        print("Training is finished.")
         print(f"epoch: {epoch} from {epochs}  Error: {np.mean(np.abs(error_last))}")
 
     def validate_input(self, expected_outcome, train_data):
