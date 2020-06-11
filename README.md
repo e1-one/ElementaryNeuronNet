@@ -1,13 +1,19 @@
 # Elementary Neuron Net
 > 👶 It is child's play with a self-written easy neural net 
 >
+> Created for educational purposes, fully autonomous (no dependencies; except numpy),
+> a simple neural network that is used for image classification
+>
 This neural network has the next features:
- - Feed-Forward Neural Network or Artificial Neural Network (ANN) 
+ - feed-forward Neural Network or Artificial Neural Network (ANN) 
  - has a hidden layer
  - activation function: sigmoid
  - is fed with "full batch" (during one epoch weights adjustment is based on all training examples)
  - weights could be written/loaded to the file
 
-*./example_digits.py*  - demo of how this NN recognizes handwritten digits
+####How to run it
+*./download_training_data.sh* - downloads training set into /data folder
+*./src/example_digits.py*  - demo of how this NN recognizes handwritten digits
 
-package helper.mnist contains functions for operating with [MNIST](http://yann.lecun.com/exdb/mnist/) database
+#####Other:
+*./src/helper.mnist* contains functions for operating with [MNIST](http://yann.lecun.com/exdb/mnist/) database
