@@ -11,9 +11,9 @@ This neural network has the next features:
  - is fed with "full batch" (during one epoch weights adjustment is based on all training examples)
  - weights could be written/loaded to the file
 
-####How to run it
+#### How to run it
 *./download_training_data.sh* - downloads training set into /data folder
 *./src/example_digits.py*  - demo of how this NN recognizes handwritten digits
 
-#####Other:
+##### Other:
 *./src/helper.mnist* contains functions for operating with [MNIST](http://yann.lecun.com/exdb/mnist/) database

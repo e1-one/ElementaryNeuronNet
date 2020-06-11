@@ -1,6 +1,7 @@
+#!/bin/bash
 
 echo "Downloading MNIST handwritten digits databese"
-
+``
 DATA_PATH='data/digits'
 echo "Data path is $DATA_PATH"
 mkdir $DATA_PATH
