@@ -1,10 +1,10 @@
-# Elementary Neuron Net
-> 👶 It is child's play with a self-written easy neural net 
+# Simple Neuron Net
+> Self-written neural net 
 >
 > Created for educational purposes, fully autonomous (no dependencies; except numpy),
 > a simple neural network that is used for image classification
 >
-This neural network has the next features:
+This neural network has the following features:
  - feed-forward Neural Network or Artificial Neural Network (ANN) 
  - has a hidden layer
  - activation function: sigmoid
